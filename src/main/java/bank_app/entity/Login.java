@@ -7,10 +7,8 @@ import org.springframework.stereotype.Component;
 @Component
 public class Login {
 
-    private String emailAddress;
+    private String email;
 
     private String password;
-
-
 
 }

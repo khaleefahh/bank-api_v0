@@ -1,10 +1,11 @@
 pipeline {
     
     agent any
-    
+  
       environment {
         PATH = "$PATH:/usr/share/maven"
     }
+
 
     stages {
         stage('Initial_cleanup'){
@@ -26,7 +27,7 @@ pipeline {
                 
             }
         }
-        
+      
         stage("Build"){
             steps {
                 script{
@@ -43,11 +44,13 @@ pipeline {
                     sh "cd bankapp_project_backend && mvn sonar:sonar"
                 }
             }
+
         }
         stage("Build image"){
             steps{
                 script{
-                    sh "cd bankapp_project_backend && docker build -t mlarry/backend_app:2.0 ."
+                  
+                    sh "cd bankapp_project_backend && docker build -t mlarry/backend_app:1.0 ."
                     
                 }
             }
@@ -57,7 +60,9 @@ pipeline {
             steps{
                 script{
                     sh "docker login -u ${env.user} -p ${env.passwd}"
-                    sh "docker push mlarry/backend_app:2.0"
+
+                    sh "docker push mlarry/backend_app"
+
                 }
             }
 

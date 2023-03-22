@@ -6,6 +6,12 @@ import org.springframework.stereotype.Repository;
 @Repository
 public interface UserRepo extends GenericRepo<User> {
 
-    User findByEmailAddress(String emailAddress);
+    User findByEmail(String email);
+
+    Boolean existsByEmail(String email);
+
+    Boolean existsByBvn(String bvn);
+
+    Boolean existsByPhoneNumber(String phoneNumber);
 
 }
