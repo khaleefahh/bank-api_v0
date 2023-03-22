@@ -21,7 +21,6 @@ import java.util.List;
         uniqueConstraints = {@UniqueConstraint
                 (columnNames = {"email", "phoneNumber", "bvn"})
         })
-
 public class User {
 
     @Id

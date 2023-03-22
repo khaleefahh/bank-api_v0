@@ -12,11 +12,13 @@
 # EXPOSE 4000
 # ENTRYPOINT ["java","-jar","/apps/backend_app.jar"]
 # #"--spring.config.location=file:///apps/config/application.properties"
- FROM adoptopenjdk/maven-openjdk8 AS build
+FROM adoptopenjdk/maven-openjdk8 AS build
+
 
 WORKDIR /app
 COPY src src
 COPY ./pom.xml .
+
 RUN mvn clean install
 
 FROM openjdk:8-jdk-alpine
